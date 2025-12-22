@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0b1727;
+  --color-secondary: #ffb91d;
+}
+
+button {
+  @apply rounded-md cursor-pointer px-4 py-2;
+}

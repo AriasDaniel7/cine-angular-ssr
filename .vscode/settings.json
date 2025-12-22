@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"wrangler.json": "jsonc"
+	},
+	"angular-schematics.schematicsDefaultOptions": {
+		"angular-*": {
+			"externalTemplate": true
+		}
+	}
+}

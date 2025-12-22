@@ -1,0 +1,7 @@
+@if (moviesResource.isLoading()) {
+  <div>Cargando películas...</div>
+} @else if (moviesResource.error()) {
+  <div>Error al cargar películas</div>
+} @else {
+  <home-carousel [movies]="moviesResource.value()" />
+}

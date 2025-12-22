@@ -1,0 +1,16 @@
+<swiper-container #swiper init="false">
+  @for (movie of movies(); track movie.id; let i = $index) {
+  <swiper-slide>
+    <div>
+      <img
+        [ngSrc]="movie.poster"
+        width="300"
+        height="450"
+        [alt]="movie.title"
+        [priority]="i < 3 || movies().length - 1"
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      />
+    </div>
+  </swiper-slide>
+  }
+</swiper-container>

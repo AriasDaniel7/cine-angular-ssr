@@ -1,0 +1,69 @@
+<nav
+  [class.max-h-16]="!isMenuOpen()"
+  [class.max-h-96]="isMenuOpen()"
+  class="bg-primary shadow-md w-full fixed top-0 overflow-hidden transition-discrete duration-200 ease-in-out z-50"
+>
+  <div
+    class="max-w-7xl mx-auto px-6 py-3 flex flex-col lg:flex-row justify-center lg:justify-between items-start lg:items-center gap-4"
+  >
+    <div class="flex justify-between items-center w-full lg:w-auto">
+      <div class="h-10 w-34">
+        <img
+          class="object-contain h-10"
+          ngSrc="/assets/images/logo.webp"
+          width="136"
+          height="40"
+          alt="Logo"
+          priority
+        />
+      </div>
+      <button
+        type="button"
+        (click)="toggleMenu()"
+        class="lg:hidden p-2! flex justify-center items-center transition-colors duration-200 ease-in-out hover:bg-secondary text-gray-100 hover:text-primary"
+      >
+        @if(!isMenuOpen()){
+        <shared-icon icon="menu" [iconClass]="'w-5 h-5'" />
+        }@else{
+        <shared-icon icon="close" [iconClass]="'w-5 h-5'" />
+        }
+      </button>
+    </div>
+
+    <ul
+      class="text-gray-300 flex flex-col lg:flex-row items-start lg:items-center justify-center gap-1 lg:gap-4 text-sm font-medium w-full"
+    >
+      @for (item of menuItems(); track $index) {
+
+      <li
+        routerLinkActive="bg-white/5 text-secondary lg:bg-transparent"
+        #rla="routerLinkActive"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="py-2 px-4 cursor-pointer relative w-full lg:w-auto"
+      >
+        <a
+          [routerLink]="item.route"
+          class="transition-colors duration-200 ease-in-out"
+          [class.hover:text-gray-100]="!rla.isActive"
+        >
+          <div>
+            {{ item.label }}
+            @if(rla.isActive){
+            <span
+              class="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-8 rounded-full bg-secondary hidden lg:block"
+            ></span>
+            }
+          </div>
+        </a>
+      </li>
+      }
+    </ul>
+
+    <button
+      class="w-full lg:w-auto bg-secondary hover:bg-secondary/90 text-sm transition-colors duration-200 ease-in-out flex justify-center items-center gap-2 text-primary font-medium shadow-sm mb-2 lg:mb-0"
+    >
+      <shared-icon icon="user" classList="w-4 h-4 text-primary" />
+      <span class="whitespace-nowrap">Iniciar sesión</span>
+    </button>
+  </div>
+</nav>
